@@ -3,6 +3,7 @@ package io.github.owuor91.mtg.ui.activities;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import butterknife.ButterKnife;
 import io.github.owuor91.mtg.MyApplication;
 import io.github.owuor91.mtg.di.activity.ActivityComponent;
 
@@ -18,5 +19,10 @@ public class BaseActivity extends AppCompatActivity {
 
   public ActivityComponent injector() {
     return ((MyApplication) getApplicationContext()).getActivityInjector(this);
+  }
+
+  @Override protected void onStart() {
+    super.onStart();
+    ButterKnife.bind(this);
   }
 }
