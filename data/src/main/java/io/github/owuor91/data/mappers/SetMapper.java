@@ -2,7 +2,7 @@ package io.github.owuor91.data.mappers;
 
 import android.util.Log;
 import io.github.owuor91.data.models.api.SetApiModel;
-import io.github.owuor91.domain.di.models.Set;
+import io.github.owuor91.domain.models.Set;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

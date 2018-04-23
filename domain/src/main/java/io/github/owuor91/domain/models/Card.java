@@ -1,4 +1,4 @@
-package io.github.owuor91.domain.di.models;
+package io.github.owuor91.domain.models;
 
 import java.util.ArrayList;
 

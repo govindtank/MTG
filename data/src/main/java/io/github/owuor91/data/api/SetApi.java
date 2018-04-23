@@ -1,6 +1,6 @@
 package io.github.owuor91.data.api;
 
-import io.github.owuor91.data.models.api.responses.CardResponse;
+import io.github.owuor91.data.models.api.responses.CardsResponse;
 import io.github.owuor91.data.models.api.responses.SetResponse;
 import io.github.owuor91.data.models.api.responses.SetsResponse;
 import io.reactivex.Flowable;
@@ -16,5 +16,5 @@ public interface SetApi {
 
   @GET("sets/{id}") Flowable<SetResponse> getSet(@Path("id") String setId);
 
-  @GET("sets/{id}/booster") Flowable<CardResponse> getBoosterPack(@Path("id") String setId);
+  @GET("sets/{id}/booster") Flowable<CardsResponse> getBoosterPack(@Path("id") String setId);
 }

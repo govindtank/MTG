@@ -1,6 +1,7 @@
 package io.github.owuor91.mtg.di.fragment;
 
 import dagger.Subcomponent;
+import io.github.owuor91.mtg.ui.fragments.BaseFragment;
 import io.github.owuor91.mtg.ui.fragments.SetsFragment;
 
 /**
@@ -10,6 +11,8 @@ import io.github.owuor91.mtg.ui.fragments.SetsFragment;
 @Subcomponent(modules = FragmentModule.class) public interface FragmentComponent {
 
   void inject(SetsFragment setsFragment);
+
+  void baseInject(BaseFragment baseFragment);
 
   @Subcomponent.Builder interface Builder {
     Builder fragmentModule(FragmentModule fragmentModule);

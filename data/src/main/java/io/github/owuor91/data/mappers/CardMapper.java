@@ -1,7 +1,7 @@
 package io.github.owuor91.data.mappers;
 
 import io.github.owuor91.data.models.api.CardApiModel;
-import io.github.owuor91.domain.di.models.Card;
+import io.github.owuor91.domain.models.Card;
 
 /**
  * Created by johnowuor on 23/04/2018.
