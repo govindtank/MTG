@@ -42,6 +42,10 @@ public class CardsAdapterPresenter implements BasePresenter {
 
   }
 
+  public void onClickCard(int position) {
+    cardsListPresenter.onClickCard(cardList.get(position).getId());
+  }
+
   public interface View extends BasePresenter.View {
     void notifyAdapter();
   }

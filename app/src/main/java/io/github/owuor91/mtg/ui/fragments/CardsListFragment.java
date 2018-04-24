@@ -81,4 +81,11 @@ public class CardsListFragment extends BaseFragment implements CardsListPresente
   @Override public void hideProgress() {
     progressBar.setVisibility(View.GONE);
   }
+
+  @Override public void openCard(String cardId) {
+    getFragmentManager().beginTransaction()
+        .replace(R.id.mainActivityFrameLayout, CardFragment.newInstance(cardId))
+        .addToBackStack(null)
+        .commit();
+  }
 }

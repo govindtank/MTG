@@ -9,20 +9,19 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
- * Created by johnowuor on 24/04/2018.
+ * Created by johnowuor on 25/04/2018.
  */
 
-public class CardsListPresenter implements BasePresenter {
-  private View view;
+public class CardPresenter implements BasePresenter {
   private CompositeDisposable compositeDisposable;
+  private View view;
   private CardRepository cardApiRepository;
 
-  @Inject public CardsListPresenter(@Named(DIConstants.API) CardRepository cardApiRepository) {
+  @Inject public CardPresenter(@Named(DIConstants.API) CardRepository cardApiRepository) {
     this.cardApiRepository = cardApiRepository;
   }
 
@@ -30,35 +29,28 @@ public class CardsListPresenter implements BasePresenter {
     this.view = view;
   }
 
-  @Override public void dispose() {
-    RxUtils.dispose(compositeDisposable);
-  }
-
-  public void getSetCards(String setCode) {
+  public void getCardDetails(String cardId) {
     compositeDisposable = RxUtils.initDisposables(compositeDisposable);
-    view.showProgress();
 
-    Disposable disposable = cardApiRepository.getSetCards(setCode)
+    Disposable disposable = cardApiRepository.getCard(cardId)
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
-        .doOnSuccess(cardList -> view.hideProgress())
         .doOnError(throwable -> view.hideProgress())
-        .subscribe(view::displaySetCards, view::handleError);
+        .doOnSuccess(card -> view.hideProgress())
+        .subscribe(view::displayCardDetails, view::handleError);
 
     compositeDisposable.add(disposable);
   }
 
-  public void onClickCard(String cardId) {
-    view.openCard(cardId);
+  @Override public void dispose() {
+    RxUtils.dispose(compositeDisposable);
   }
 
   public interface View extends BasePresenter.View {
-    void displaySetCards(List<Card> cardList);
-
     void showProgress();
 
     void hideProgress();
 
-    void openCard(String cardId);
+    void displayCardDetails(Card card);
   }
 }

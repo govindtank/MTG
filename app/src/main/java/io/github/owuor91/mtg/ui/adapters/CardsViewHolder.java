@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.BindView;
+import butterknife.OnClick;
 import com.squareup.picasso.Picasso;
 import io.github.owuor91.domain.di.DIConstants;
 import io.github.owuor91.mtg.R;
@@ -55,5 +56,9 @@ public class CardsViewHolder extends BaseViewHolder implements CardsViewHolderPr
 
   @Override public void setName(String name) {
     tvName.setText(String.format("%s %s", context.getString(R.string.name), name));
+  }
+
+  @OnClick(R.id.cardListItemCardView) public void onClickCard() {
+    cardsViewHolderPresenter.onClickCard();
   }
 }

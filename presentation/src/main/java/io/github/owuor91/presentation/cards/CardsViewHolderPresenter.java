@@ -64,6 +64,10 @@ public class CardsViewHolderPresenter implements BasePresenter {
 
   }
 
+  public void onClickCard() {
+    cardsAdapterPresenter.onClickCard(position);
+  }
+
   public interface View extends BasePresenter.View {
     void setImage(String imageUrl);
 
