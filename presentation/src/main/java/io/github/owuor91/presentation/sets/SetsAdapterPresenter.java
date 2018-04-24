@@ -42,6 +42,10 @@ public class SetsAdapterPresenter implements BasePresenter {
 
   }
 
+  public void onSetClick(int position) {
+    setsPresenter.onSetClick(sets.get(position).getCode());
+  }
+
   public interface View extends BasePresenter.View {
     void notifyAdapter();
   }

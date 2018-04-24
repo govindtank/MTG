@@ -1,9 +1,9 @@
-package io.github.owuor91.presentation.sets;
+package io.github.owuor91.presentation.cards;
 
 import io.github.owuor91.data.utils.RxUtils;
 import io.github.owuor91.domain.di.DIConstants;
-import io.github.owuor91.domain.models.Set;
-import io.github.owuor91.domain.repository.SetRepository;
+import io.github.owuor91.domain.models.Card;
+import io.github.owuor91.domain.repository.CardRepository;
 import io.github.owuor91.presentation.BasePresenter;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -14,16 +14,16 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
- * Created by johnowuor on 23/04/2018.
+ * Created by johnowuor on 24/04/2018.
  */
 
-public class SetsPresenter implements BasePresenter {
+public class CardsListPresenter implements BasePresenter {
   private View view;
   private CompositeDisposable compositeDisposable;
-  private SetRepository setApiRepository;
+  private CardRepository cardApiRepository;
 
-  @Inject public SetsPresenter(@Named(DIConstants.API) SetRepository setApiRepository) {
-    this.setApiRepository = setApiRepository;
+  @Inject public CardsListPresenter(@Named(DIConstants.API) CardRepository cardApiRepository) {
+    this.cardApiRepository = cardApiRepository;
   }
 
   public void setView(View view) {
@@ -34,31 +34,25 @@ public class SetsPresenter implements BasePresenter {
     RxUtils.dispose(compositeDisposable);
   }
 
-  public void fetchSets() {
+  public void getSetCards(String setCode) {
     compositeDisposable = RxUtils.initDisposables(compositeDisposable);
     view.showProgress();
 
-    Disposable disposable = setApiRepository.getSets()
+    Disposable disposable = cardApiRepository.getSetCards(setCode)
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
-        .doOnSuccess(sets -> view.hideProgress())
+        .doOnSuccess(cardList -> view.hideProgress())
         .doOnError(throwable -> view.hideProgress())
-        .subscribe(view::displaySets, view::handleError);
+        .subscribe(view::displaySetCards, view::handleError);
 
     compositeDisposable.add(disposable);
   }
 
-  public void onSetClick(String setcode) {
-    view.openSet(setcode);
-  }
-
   public interface View extends BasePresenter.View {
+    void displaySetCards(List<Card> cardList);
+
     void showProgress();
 
     void hideProgress();
-
-    void displaySets(List<Set> sets);
-
-    void openSet(String setCode);
   }
 }

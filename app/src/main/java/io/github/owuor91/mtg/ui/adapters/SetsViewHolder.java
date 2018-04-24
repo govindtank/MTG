@@ -1,9 +1,11 @@
 package io.github.owuor91.mtg.ui.adapters;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.TextView;
 import butterknife.BindView;
+import butterknife.OnClick;
 import io.github.owuor91.domain.Constants;
 import io.github.owuor91.domain.di.DIConstants;
 import io.github.owuor91.mtg.R;
@@ -30,6 +32,7 @@ public class SetsViewHolder extends BaseViewHolder implements SetsViewHolderPres
   @BindView(R.id.setListItemTvBorder) TextView tvBorder;
   @BindView(R.id.setListItemTvReleaseDate) TextView tvReleaseDate;
   @BindView(R.id.setListItemTvInfoCode) TextView tvInfoCode;
+  @BindView(R.id.setListItemCardView) CardView cardView;
 
   public SetsViewHolder(View itemView, AdapterComponent adapterComponent) {
     super(itemView);
@@ -65,5 +68,9 @@ public class SetsViewHolder extends BaseViewHolder implements SetsViewHolderPres
 
   @Override public void setInfoCode(String infoCode) {
     tvInfoCode.setText(String.format("%s %s", context.getString(R.string.infoCode), infoCode));
+  }
+
+  @OnClick(R.id.setListItemCardView) public void onClickSetCard() {
+    setsViewHolderPresenter.onSetClick();
   }
 }

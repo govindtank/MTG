@@ -8,4 +8,6 @@ public class Constants {
   public static final String YYYY_MM_DD = "yyyy-MM-dd";
   public static final String SET_MAPPER_TAG = "SETMAPPERTAG";
   public static final String DD_MMMM_YYYY = "dd MMMM yyyy";
+  public static final String EMPTY_STRING = "";
+  public static final String COMMA_SPACE = ", ";
 }

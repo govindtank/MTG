@@ -11,7 +11,7 @@ public class Card {
 
   private String manaCost;
 
-  private int cmc;
+  private double cmc;
 
   private ArrayList<String> colors;
 
@@ -59,8 +59,6 @@ public class Card {
 
   private String originalType;
 
-  private ArrayList<String> legalities;
-
   private String id;
 
   public Card() {
@@ -93,7 +91,6 @@ public class Card {
     setPrintings(builder.printings);
     setOriginalText(builder.originalText);
     setOriginalType(builder.originalType);
-    setLegalities(builder.legalities);
     setId(builder.id);
   }
 
@@ -117,11 +114,11 @@ public class Card {
     this.manaCost = manaCost;
   }
 
-  public int getCmc() {
+  public double getCmc() {
     return cmc;
   }
 
-  public void setCmc(int cmc) {
+  public void setCmc(double cmc) {
     this.cmc = cmc;
   }
 
@@ -309,14 +306,6 @@ public class Card {
     this.originalType = originalType;
   }
 
-  public ArrayList<String> getLegalities() {
-    return legalities;
-  }
-
-  public void setLegalities(ArrayList<String> legalities) {
-    this.legalities = legalities;
-  }
-
   public String getId() {
     return id;
   }
@@ -328,7 +317,7 @@ public class Card {
   public static final class Builder {
     private String name;
     private String manaCost;
-    private int cmc;
+    private double cmc;
     private ArrayList<String> colors;
     private ArrayList<String> colorIdentity;
     private String type;
@@ -352,7 +341,6 @@ public class Card {
     private ArrayList<String> printings;
     private String originalText;
     private String originalType;
-    private ArrayList<String> legalities;
     private String id;
 
     private Builder() {
@@ -368,7 +356,7 @@ public class Card {
       return this;
     }
 
-    public Builder withCmc(int val) {
+    public Builder withCmc(double val) {
       cmc = val;
       return this;
     }
@@ -485,11 +473,6 @@ public class Card {
 
     public Builder withOriginalType(String val) {
       originalType = val;
-      return this;
-    }
-
-    public Builder withLegalities(ArrayList<String> val) {
-      legalities = val;
       return this;
     }
 

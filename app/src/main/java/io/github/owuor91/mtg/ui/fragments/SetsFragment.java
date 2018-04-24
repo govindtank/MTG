@@ -67,4 +67,11 @@ public class SetsFragment extends BaseFragment implements SetsPresenter.View {
     setsAdapter.setsAdapterPresenter.setSetsPresenter(setsPresenter);
     setsAdapter.setsAdapterPresenter.onDataChange(setsList);
   }
+
+  @Override public void openSet(String setCode) {
+    getFragmentManager().beginTransaction()
+        .replace(R.id.mainActivityFrameLayout, CardsListFragment.newInstance(setCode))
+        .addToBackStack(null)
+        .commit();
+  }
 }

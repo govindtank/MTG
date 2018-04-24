@@ -32,4 +32,12 @@ public class CardApiRepository implements CardRepository {
   @Override public Single<Card> getCard(String cardId) {
     return cardApi.getCard(cardId).map(CardResponse::getCardApiModel).map(CardMapper::transformFromApi).firstOrError();
   }
+
+  @Override public Single<List<Card>> getSetCards(String setCode) {
+    return cardApi.getSetCards(setCode)
+        .map(CardsResponse::getCardApiModels)
+        .flatMap(Flowable::fromIterable)
+        .map(CardMapper::transformFromApi)
+        .toList();
+  }
 }

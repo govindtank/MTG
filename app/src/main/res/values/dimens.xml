@@ -4,4 +4,6 @@
   <dimen name="separatorHeight">1dp</dimen>
   <dimen name="smallMargin">8dp</dimen>
   <dimen name="dimenTiny">4dp</dimen>
+  <dimen name="cardThumbnailHeight">100dp</dimen>
+  <dimen name="cardThumbnailWidth">75dp</dimen>
 </resources>

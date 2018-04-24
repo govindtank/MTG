@@ -8,4 +8,6 @@
   <string name="border">Border :</string>
   <string name="releaseDate">Released :</string>
   <string name="infoCode">Info Code :</string>
+  <string name="text">Text :</string>
+  <string name="colors">Colors :</string>
 </resources>

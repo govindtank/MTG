@@ -12,4 +12,6 @@ public interface CardRepository {
   Single<List<Card>> getCards();
 
   Single<Card> getCard(String cardId);
+
+  Single<List<Card>> getSetCards(String setCode);
 }

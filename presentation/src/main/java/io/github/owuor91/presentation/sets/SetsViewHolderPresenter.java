@@ -48,6 +48,10 @@ public class SetsViewHolderPresenter implements BasePresenter {
 
   }
 
+  public void onSetClick() {
+    setsAdapterPresenter.onSetClick(position);
+  }
+
   public interface View extends BasePresenter.View {
     void setCode(String code);
 

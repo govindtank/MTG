@@ -36,7 +36,6 @@ public class CardMapper {
         .withPrintings(cardApiModel.getPrintings())
         .withOriginalText(cardApiModel.getOriginalText())
         .withOriginalType(cardApiModel.getOriginalType())
-        .withLegalities(cardApiModel.getLegalities())
         .withId(cardApiModel.getId())
         .build();
   }
