@@ -2,6 +2,7 @@ package io.github.owuor91.data.mappers;
 
 import android.util.Log;
 import io.github.owuor91.data.models.api.SetApiModel;
+import io.github.owuor91.domain.Constants;
 import io.github.owuor91.domain.models.Set;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -13,8 +14,6 @@ import java.util.Date;
  */
 
 public class SetMapper {
-
-  public static final String SET_MAPPER_TAG = "SETMAPPERTAG";
 
   public static Set transformFromApi(SetApiModel setApiModel) {
     return Set.newBuilder()
@@ -32,12 +31,12 @@ public class SetMapper {
   }
 
   public static Date parseDate(String dateString) {
-    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    DateFormat dateFormat = new SimpleDateFormat(Constants.YYYY_MM_DD);
     Date date = new Date();
     try {
       date = dateFormat.parse(dateString);
     } catch (ParseException p) {
-      Log.e(SET_MAPPER_TAG, p.getMessage());
+      Log.e(Constants.SET_MAPPER_TAG, p.getMessage());
     }
 
     return date;

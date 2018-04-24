@@ -1,6 +1,7 @@
 package io.github.owuor91.mtg.di.activity;
 
 import dagger.Subcomponent;
+import io.github.owuor91.mtg.di.adapter.AdapterComponent;
 import io.github.owuor91.mtg.di.fragment.FragmentComponent;
 import io.github.owuor91.mtg.ui.activities.BaseActivity;
 import io.github.owuor91.mtg.ui.activities.MainActivity;
@@ -16,6 +17,8 @@ import io.github.owuor91.mtg.ui.activities.MainActivity;
   void baseInject(BaseActivity baseActivity);
 
   void inject(MainActivity mainActivity);
+
+  AdapterComponent.Builder adapterBuilder();
 
   @Subcomponent.Builder interface Builder {
     Builder activityModule(ActivityModule activityModule);

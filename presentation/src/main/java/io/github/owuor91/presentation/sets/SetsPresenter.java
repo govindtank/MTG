@@ -40,9 +40,9 @@ public class SetsPresenter implements BasePresenter {
 
     Disposable disposable = setApiRepository.getSets()
         .subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread())
         .doOnSuccess(sets -> view.hideProgress())
         .doOnError(throwable -> view.hideProgress())
-        .observeOn(AndroidSchedulers.mainThread())
         .subscribe(view::displaySets, view::handleError);
 
     compositeDisposable.add(disposable);

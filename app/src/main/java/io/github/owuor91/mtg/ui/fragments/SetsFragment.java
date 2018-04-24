@@ -2,15 +2,23 @@ package io.github.owuor91.mtg.ui.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ProgressBar;
+import butterknife.BindView;
 import io.github.owuor91.domain.models.Set;
 import io.github.owuor91.mtg.R;
+import io.github.owuor91.mtg.ui.adapters.SetsAdapter;
 import io.github.owuor91.presentation.sets.SetsPresenter;
 import java.util.List;
 import javax.inject.Inject;
 
 public class SetsFragment extends BaseFragment implements SetsPresenter.View {
   @Inject SetsPresenter setsPresenter;
+  @BindView(R.id.setsFragmentRecyclerView) RecyclerView setsRecyclerView;
+  @BindView(R.id.setsFragmentProgressBar) ProgressBar progressBar;
+  private SetsAdapter setsAdapter;
 
   public SetsFragment() {
   }
@@ -24,6 +32,11 @@ public class SetsFragment extends BaseFragment implements SetsPresenter.View {
     injector().inject(this);
   }
 
+  @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
+    setsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+  }
+
   @Override public void onStart() {
     super.onStart();
     setsPresenter.setView(this);
@@ -35,15 +48,23 @@ public class SetsFragment extends BaseFragment implements SetsPresenter.View {
   }
 
   @Override public void showProgress() {
-
+    progressBar.setVisibility(View.VISIBLE);
   }
 
   @Override public void hideProgress() {
-
+    progressBar.setVisibility(View.GONE);
   }
 
-  @Override public void displaySets(List<Set> sets) {
-    int count = sets.size();
-    Log.d(this.getClass().getName(), String.valueOf(count));
+  @Override public void displaySets(List<Set> setsList) {
+    if (setsAdapter == null) {
+      setsAdapter = new SetsAdapter(activityInjector(), getContext());
+    }
+
+    if (setsRecyclerView.getAdapter() == null) {
+      setsRecyclerView.setAdapter(setsAdapter);
+    }
+
+    setsAdapter.setsAdapterPresenter.setSetsPresenter(setsPresenter);
+    setsAdapter.setsAdapterPresenter.onDataChange(setsList);
   }
 }
