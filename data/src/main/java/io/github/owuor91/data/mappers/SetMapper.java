@@ -23,7 +23,6 @@ public class SetMapper {
         .withType(setApiModel.getType())
         .withBorder(setApiModel.getBorder())
         .withMkmId(setApiModel.getMkmId())
-        .withBooster(setApiModel.getBooster())
         .withMkmName(setApiModel.getMkmName())
         .withReleaseDate(parseDate(setApiModel.getReleaseDate()))
         .withGathererCode(setApiModel.getGathererCode())

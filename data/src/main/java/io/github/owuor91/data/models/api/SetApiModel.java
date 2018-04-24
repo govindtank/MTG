@@ -1,7 +1,6 @@
 package io.github.owuor91.data.models.api;
 
 import com.google.gson.annotations.SerializedName;
-import java.util.ArrayList;
 
 /**
  * Created by johnowuor on 23/04/2018.
@@ -17,8 +16,6 @@ public class SetApiModel {
   private String border;
 
   @SerializedName("mkm_id") private int mkmId;
-
-  private ArrayList<String> booster;
 
   @SerializedName("mkm_name") private String mkmName;
 
@@ -39,7 +36,6 @@ public class SetApiModel {
     setType(builder.type);
     setBorder(builder.border);
     setMkmId(builder.mkmId);
-    setBooster(builder.booster);
     setMkmName(builder.mkmName);
     setReleaseDate(builder.releaseDate);
     setGathererCode(builder.gathererCode);
@@ -91,14 +87,6 @@ public class SetApiModel {
     this.mkmId = mkmId;
   }
 
-  public ArrayList<String> getBooster() {
-    return booster;
-  }
-
-  public void setBooster(ArrayList<String> booster) {
-    this.booster = booster;
-  }
-
   public String getMkmName() {
     return mkmName;
   }
@@ -145,7 +133,6 @@ public class SetApiModel {
     private String type;
     private String border;
     private int mkmId;
-    private ArrayList<String> booster;
     private String mkmName;
     private String releaseDate;
     private String gathererCode;
@@ -177,11 +164,6 @@ public class SetApiModel {
 
     public Builder withMkmId(int val) {
       mkmId = val;
-      return this;
-    }
-
-    public Builder withBooster(ArrayList<String> val) {
-      booster = val;
       return this;
     }
 

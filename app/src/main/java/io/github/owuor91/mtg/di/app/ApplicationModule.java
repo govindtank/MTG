@@ -1,6 +1,8 @@
 package io.github.owuor91.mtg.di.app;
 
 import android.content.Context;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import dagger.Module;
 import dagger.Provides;
 import io.github.owuor91.domain.di.DIConstants;
@@ -21,5 +23,9 @@ import javax.inject.Named;
 
   @Provides @Named(DIConstants.APP) public Context provideAppContext() {
     return myApplication;
+  }
+
+  @Provides public Gson provideGson() {
+    return new GsonBuilder().create();
   }
 }

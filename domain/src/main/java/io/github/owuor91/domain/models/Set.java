@@ -1,6 +1,5 @@
 package io.github.owuor91.domain.models;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -17,8 +16,6 @@ public class Set {
   private String border;
 
   private int mkmId;
-
-  private ArrayList<String> booster;
 
   private String mkmName;
 
@@ -39,7 +36,6 @@ public class Set {
     setType(builder.type);
     setBorder(builder.border);
     setMkmId(builder.mkmId);
-    setBooster(builder.booster);
     setMkmName(builder.mkmName);
     setReleaseDate(builder.releaseDate);
     setGathererCode(builder.gathererCode);
@@ -91,14 +87,6 @@ public class Set {
     this.mkmId = mkmId;
   }
 
-  public ArrayList<String> getBooster() {
-    return booster;
-  }
-
-  public void setBooster(ArrayList<String> booster) {
-    this.booster = booster;
-  }
-
   public String getMkmName() {
     return mkmName;
   }
@@ -145,7 +133,6 @@ public class Set {
     private String type;
     private String border;
     private int mkmId;
-    private ArrayList<String> booster;
     private String mkmName;
     private Date releaseDate;
     private String gathererCode;
@@ -177,11 +164,6 @@ public class Set {
 
     public Builder withMkmId(int val) {
       mkmId = val;
-      return this;
-    }
-
-    public Builder withBooster(ArrayList<String> val) {
-      booster = val;
       return this;
     }
 
