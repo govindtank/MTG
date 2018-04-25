@@ -1,11 +1,10 @@
 package io.github.owuor91.presentation.cards;
 
 import android.content.Context;
-import io.github.owuor91.domain.Constants;
+import io.github.owuor91.data.utils.ArrayListUtils;
 import io.github.owuor91.domain.di.DIConstants;
 import io.github.owuor91.domain.models.Card;
 import io.github.owuor91.presentation.BasePresenter;
-import java.util.ArrayList;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -40,24 +39,9 @@ public class CardsViewHolderPresenter implements BasePresenter {
 
     view.setImage(card.getImageUrl());
 
-    setColors(card.getColors());
+    view.setColors(ArrayListUtils.convertArrayListToString(card.getColors()));
 
     view.setName(card.getName());
-  }
-
-  void setColors(ArrayList<String> colorsArray) {
-    if (colorsArray == null) return;
-    String colors = Constants.EMPTY_STRING;
-    if (colorsArray.size() > 1) {
-      for (String color : colorsArray) {
-        colors += color;
-        colors += Constants.COMMA_SPACE;
-      }
-    } else {
-      colors = colorsArray.get(0);
-    }
-
-    view.setColors(colors);
   }
 
   @Override public void dispose() {

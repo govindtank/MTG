@@ -2,12 +2,16 @@
   <string name="app_name">MTG</string>
   <string name="title_activity_main">MainActivity</string>g
   <string name="hello_blank_fragment">Hello blank fragment</string>
-  <string name="code">Code :</string>
-  <string name="name">Name :</string>
-  <string name="type">Type :</string>
-  <string name="border">Border :</string>
-  <string name="releaseDate">Released :</string>
-  <string name="infoCode">Info Code :</string>
-  <string name="text">Text :</string>
-  <string name="colors">Colors :</string>
+  <string name="code">Code:</string>
+  <string name="name">Name:</string>
+  <string name="type">Type:</string>
+  <string name="border">Border:</string>
+  <string name="releaseDate">Released:</string>
+  <string name="infoCode">Info Code:</string>
+  <string name="text">Text:</string>
+  <string name="colors">Colors:</string>
+  <string name="set">Set:</string>
+  <string name="artist">Artist:</string>
+  <string name="sets">Sets</string>
+  <string name="cards">Cards</string>
 </resources>

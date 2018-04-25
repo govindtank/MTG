@@ -10,4 +10,5 @@ public class Constants {
   public static final String DD_MMMM_YYYY = "dd MMMM yyyy";
   public static final String EMPTY_STRING = "";
   public static final String COMMA_SPACE = ", ";
+  public static final String COMMA = ",";
 }

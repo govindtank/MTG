@@ -1,15 +1,89 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="io.github.owuor91.mtg.ui.fragments.CardFragment"
     >
 
-  <!-- TODO: Update blank fragment layout -->
-  <TextView
+  <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:text="@string/hello_blank_fragment"
+      android:orientation="vertical"
+      >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:background="@color/cardImageBackground"
+        android:paddingLeft="@dimen/defaultMargin"
+        android:paddingRight="@dimen/defaultMargin"
+        >
+
+      <ImageView
+          android:id="@+id/cardFragmentImgCard"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          />
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/defaultMargin"
+        android:paddingRight="@dimen/defaultMargin"
+        android:paddingTop="@dimen/defaultMargin"
+        >
+
+      <TextView
+          android:id="@+id/cardFragmentTvArtist"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="@dimen/smallMargin"
+          android:fontFamily="sans-serif-light"
+          android:textColor="@color/black95"
+          />
+
+      <TextView
+          android:id="@+id/cardFragmentTvColors"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="@dimen/smallMargin"
+          android:fontFamily="sans-serif-light"
+          android:textColor="@color/black95"
+          />
+
+      <TextView
+          android:id="@+id/cardFragmentTvSetName"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="@dimen/smallMargin"
+          android:fontFamily="sans-serif-light"
+          android:textColor="@color/black95"
+          />
+
+      <TextView
+          android:id="@+id/cardFragmentTvText"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="@dimen/smallMargin"
+          android:fontFamily="sans-serif-light"
+          android:textColor="@color/black95"
+          />
+
+    </LinearLayout>
+
+  </LinearLayout>
+
+  <ProgressBar
+      android:id="@+id/cardFragmentProgressBar"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerInParent="true"
+      android:visibility="gone"
       />
 
-</FrameLayout>
+</RelativeLayout>

@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.6"
             android:fontFamily="sans-serif-light"
-            android:textColor="@color/black_95"
+            android:textColor="@color/black95"
             />
 
         <TextView
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.4"
             android:fontFamily="sans-serif-light"
-            android:textColor="@color/black_95"
+            android:textColor="@color/black95"
             />
 
       </LinearLayout>
@@ -54,7 +54,7 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:fontFamily="sans-serif-light"
-          android:textColor="@color/black_95"
+          android:textColor="@color/black95"
           />
 
       <LinearLayout
@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.6"
             android:fontFamily="sans-serif-light"
-            android:textColor="@color/black_95"
+            android:textColor="@color/black95"
             />
 
         <TextView
@@ -77,7 +77,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.4"
             android:fontFamily="sans-serif-light"
-            android:textColor="@color/black_95"
+            android:textColor="@color/black95"
             />
 
       </LinearLayout>
@@ -88,7 +88,7 @@
           android:layout_height="wrap_content"
           android:layout_alignParentRight="true"
           android:fontFamily="sans-serif-light"
-          android:textColor="@color/black_95"
+          android:textColor="@color/black95"
           />
 
     </LinearLayout>

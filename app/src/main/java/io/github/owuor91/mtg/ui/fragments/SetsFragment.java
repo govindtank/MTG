@@ -9,6 +9,7 @@ import android.widget.ProgressBar;
 import butterknife.BindView;
 import io.github.owuor91.domain.models.Set;
 import io.github.owuor91.mtg.R;
+import io.github.owuor91.mtg.ui.activities.MainActivity;
 import io.github.owuor91.mtg.ui.adapters.SetsAdapter;
 import io.github.owuor91.presentation.sets.SetsPresenter;
 import java.util.List;
@@ -44,6 +45,8 @@ public class SetsFragment extends BaseFragment implements SetsPresenter.View {
 
   @Override public void onResume() {
     super.onResume();
+    ((MainActivity) getActivity()).setToolbarTitle(getString(R.string.sets));
+    ((MainActivity) getActivity()).hideUpNavigation();
     setsPresenter.fetchSets();
   }
 

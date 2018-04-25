@@ -9,6 +9,7 @@ import android.widget.ProgressBar;
 import butterknife.BindView;
 import io.github.owuor91.domain.models.Card;
 import io.github.owuor91.mtg.R;
+import io.github.owuor91.mtg.ui.activities.MainActivity;
 import io.github.owuor91.mtg.ui.adapters.CardsAdapter;
 import io.github.owuor91.presentation.cards.CardsListPresenter;
 import java.util.List;
@@ -47,7 +48,6 @@ public class CardsListFragment extends BaseFragment implements CardsListPresente
 
   @Override public void onStart() {
     super.onStart();
-
     cardsListPresenter.setView(this);
   }
 
@@ -58,6 +58,8 @@ public class CardsListFragment extends BaseFragment implements CardsListPresente
 
   @Override public void onResume() {
     super.onResume();
+    ((MainActivity) getActivity()).setToolbarTitle(String.format("%s %s", mSetCode, getString(R.string.cards)));
+    ((MainActivity) getActivity()).showUpNavigation();
     cardsListPresenter.getSetCards(mSetCode);
   }
 

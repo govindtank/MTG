@@ -1,8 +1,8 @@
 package io.github.owuor91.presentation.cards;
 
+import io.github.owuor91.data.utils.ArrayListUtils;
 import io.github.owuor91.data.utils.RxUtils;
 import io.github.owuor91.domain.di.DIConstants;
-import io.github.owuor91.domain.models.Card;
 import io.github.owuor91.domain.repository.CardRepository;
 import io.github.owuor91.presentation.BasePresenter;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -31,13 +31,20 @@ public class CardPresenter implements BasePresenter {
 
   public void getCardDetails(String cardId) {
     compositeDisposable = RxUtils.initDisposables(compositeDisposable);
+    view.showProgress();
 
     Disposable disposable = cardApiRepository.getCard(cardId)
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
         .doOnError(throwable -> view.hideProgress())
-        .doOnSuccess(card -> view.hideProgress())
-        .subscribe(view::displayCardDetails, view::handleError);
+        .doOnSuccess(card -> view.hideProgress()).subscribe(card -> {
+          view.setTitle(card.getName());
+          view.setCardImage(card.getImageUrl());
+          view.setArtistName(card.getArtist());
+          view.setColors(ArrayListUtils.convertArrayListToString(card.getColors()));
+          view.setSetName(card.getSetName());
+          view.setText(card.getText());
+        }, view::handleError);
 
     compositeDisposable.add(disposable);
   }
@@ -51,6 +58,16 @@ public class CardPresenter implements BasePresenter {
 
     void hideProgress();
 
-    void displayCardDetails(Card card);
+    void setTitle(String title);
+
+    void setCardImage(String imageUrl);
+
+    void setArtistName(String artistName);
+
+    void setColors(String colors);
+
+    void setSetName(String setName);
+
+    void setText(String text);
   }
 }
