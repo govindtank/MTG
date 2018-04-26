@@ -48,8 +48,12 @@ public class SetsPresenter implements BasePresenter {
     compositeDisposable.add(disposable);
   }
 
-  public void onSetClick(String setcode) {
-    view.openSet(setcode);
+  public void onSetClick(Set set) {
+    view.openSet(set.getCode(), set.getName());
+  }
+
+  public void onBoosterClick(Set set) {
+    view.openBoosterPack(set.getCode(), set.getName());
   }
 
   public interface View extends BasePresenter.View {
@@ -59,6 +63,8 @@ public class SetsPresenter implements BasePresenter {
 
     void displaySets(List<Set> sets);
 
-    void openSet(String setCode);
+    void openSet(String setCode, String setName);
+
+    void openBoosterPack(String setCode, String setName);
   }
 }

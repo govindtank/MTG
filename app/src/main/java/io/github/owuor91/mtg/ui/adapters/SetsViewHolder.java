@@ -73,4 +73,9 @@ public class SetsViewHolder extends BaseViewHolder implements SetsViewHolderPres
   @OnClick(R.id.setListItemCardView) public void onClickSetCard() {
     setsViewHolderPresenter.onSetClick();
   }
+
+  @OnClick(R.id.setListItemTvBooster) public void onClickBooster() {
+    setsViewHolderPresenter.onBoosterClick();
+  }
+
 }

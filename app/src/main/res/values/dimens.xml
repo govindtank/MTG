@@ -7,4 +7,8 @@
   <dimen name="cardThumbnailHeight">100dp</dimen>
   <dimen name="cardThumbnailWidth">75dp</dimen>
   <dimen name="toolbarTitleTextSize">20sp</dimen>
+  <dimen name="smallText">12sp</dimen>
+  <dimen name="dimenLarge">32dp</dimen>
+  <dimen name="ordinaryTextSize">16sp</dimen>
+  <dimen name="dimenZero">0dp</dimen>
 </resources>

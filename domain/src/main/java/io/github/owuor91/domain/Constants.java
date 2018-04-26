@@ -11,4 +11,6 @@ public class Constants {
   public static final String EMPTY_STRING = "";
   public static final String COMMA_SPACE = ", ";
   public static final String COMMA = ",";
+  public static final String HTTP_400 = "HTTP 400";
+  public static final int HTTP_ERROR_400 = 400;
 }

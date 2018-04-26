@@ -43,7 +43,11 @@ public class SetsAdapterPresenter implements BasePresenter {
   }
 
   public void onSetClick(int position) {
-    setsPresenter.onSetClick(sets.get(position).getCode());
+    setsPresenter.onSetClick(sets.get(position));
+  }
+
+  public void onBoosterClick(int position) {
+    setsPresenter.onBoosterClick(sets.get(position));
   }
 
   public interface View extends BasePresenter.View {

@@ -41,13 +41,13 @@ public class SetsFragment extends BaseFragment implements SetsPresenter.View {
   @Override public void onStart() {
     super.onStart();
     setsPresenter.setView(this);
+    setsPresenter.fetchSets();
   }
 
   @Override public void onResume() {
     super.onResume();
     ((MainActivity) getActivity()).setToolbarTitle(getString(R.string.sets));
     ((MainActivity) getActivity()).hideUpNavigation();
-    setsPresenter.fetchSets();
   }
 
   @Override public void showProgress() {
@@ -71,9 +71,16 @@ public class SetsFragment extends BaseFragment implements SetsPresenter.View {
     setsAdapter.setsAdapterPresenter.onDataChange(setsList);
   }
 
-  @Override public void openSet(String setCode) {
+  @Override public void openSet(String setCode, String setName) {
     getFragmentManager().beginTransaction()
-        .replace(R.id.mainActivityFrameLayout, CardsListFragment.newInstance(setCode))
+        .replace(R.id.mainActivityFrameLayout, CardsListFragment.newInstance(setCode, setName, false))
+        .addToBackStack(null)
+        .commit();
+  }
+
+  @Override public void openBoosterPack(String setCode, String setName) {
+    getFragmentManager().beginTransaction()
+        .replace(R.id.mainActivityFrameLayout, CardsListFragment.newInstance(setCode, setName, true))
         .addToBackStack(null)
         .commit();
   }

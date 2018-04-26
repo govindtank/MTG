@@ -6,6 +6,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import butterknife.BindView;
 import io.github.owuor91.domain.models.Card;
 import io.github.owuor91.mtg.R;
@@ -18,9 +20,13 @@ import javax.inject.Inject;
 public class CardsListFragment extends BaseFragment implements CardsListPresenter.View {
 
   public static final String KEY_CODE = "KEY_CODE";
-  public static String mSetCode;
+  public static final String KEY_NAME = "KEY_NAME";
+  public static String mSetCode, mSetName;
+  public static boolean mFetchBooster;
   @BindView(R.id.cardsListFragmentRecyclerView) RecyclerView cardsRecyclerView;
   @BindView(R.id.cardsListFragmentProgressBar) ProgressBar progressBar;
+  @BindView(R.id.cardsListFragmentEmptyState) RelativeLayout rlEmptyState;
+  @BindView(R.id.cardsListFragmentTvEmptyState) TextView tvEmptyState;
   @Inject CardsListPresenter cardsListPresenter;
   private CardsAdapter cardsAdapter;
 
@@ -28,12 +34,15 @@ public class CardsListFragment extends BaseFragment implements CardsListPresente
 
   }
 
-  public static CardsListFragment newInstance(String setCode) {
+  public static CardsListFragment newInstance(String setCode, String setName, boolean fetchBooster) {
     CardsListFragment cardsListFragment = new CardsListFragment();
     Bundle args = new Bundle();
     args.putString(KEY_CODE, setCode);
+    args.putString(KEY_NAME, setName);
     cardsListFragment.setArguments(args);
     mSetCode = setCode;
+    mSetName = setName;
+    mFetchBooster = fetchBooster;
     return cardsListFragment;
   }
 
@@ -58,9 +67,8 @@ public class CardsListFragment extends BaseFragment implements CardsListPresente
 
   @Override public void onResume() {
     super.onResume();
-    ((MainActivity) getActivity()).setToolbarTitle(String.format("%s %s", mSetCode, getString(R.string.cards)));
     ((MainActivity) getActivity()).showUpNavigation();
-    cardsListPresenter.getSetCards(mSetCode);
+    cardsListPresenter.fetchCards(mFetchBooster, mSetCode);
   }
 
   @Override public void displaySetCards(List<Card> cardList) {
@@ -89,5 +97,19 @@ public class CardsListFragment extends BaseFragment implements CardsListPresente
         .replace(R.id.mainActivityFrameLayout, CardFragment.newInstance(cardId))
         .addToBackStack(null)
         .commit();
+  }
+
+  @Override public void setCardsTitle() {
+    ((MainActivity) getActivity()).setToolbarTitle(String.format("%s %s", mSetName, getString(R.string.cards)));
+  }
+
+  @Override public void setBoosterPackTitle() {
+    ((MainActivity) getActivity()).setToolbarTitle(String.format("%s %s", mSetName, getString(R.string.boosterPack)));
+  }
+
+  @Override public void showEmptyState() {
+    cardsRecyclerView.setVisibility(View.GONE);
+    rlEmptyState.setVisibility(View.VISIBLE);
+    tvEmptyState.setText(String.format("Sorry, %s set has no booster pack", mSetName));
   }
 }

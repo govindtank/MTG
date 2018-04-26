@@ -19,14 +19,20 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
+        app:contentInsetEnd="@dimen/defaultMargin"
+        app:contentInsetStart="@dimen/defaultMargin"
+        app:contentInsetStartWithNavigation="@dimen/dimenZero"
         app:popupTheme="@style/AppTheme.PopupOverlay"
         >
       <TextView
           android:id="@+id/mainActivityTvTitle"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
+          android:ellipsize="end"
+          android:gravity="left"
+          android:maxLines="1"
           android:textColor="@android:color/white"
-          android:textSize="@dimen/toolbarTitleTextSize"
+          android:textSize="@dimen/ordinaryTextSize"
           />
     </android.support.v7.widget.Toolbar>
 
