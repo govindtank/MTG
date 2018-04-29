@@ -13,4 +13,5 @@ public class Constants {
   public static final String COMMA = ",";
   public static final String HTTP_400 = "HTTP 400";
   public static final int HTTP_ERROR_400 = 400;
+  public static final String MTG_DB = "MTG_db";
 }

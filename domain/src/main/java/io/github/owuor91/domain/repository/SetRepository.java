@@ -15,4 +15,6 @@ public interface SetRepository {
   Single<Set> getSet(String setId);
 
   Single<List<Card>> getBoosterPack(String setId);
+
+  Single<List<Set>> saveSets(List<Set> setList);
 }

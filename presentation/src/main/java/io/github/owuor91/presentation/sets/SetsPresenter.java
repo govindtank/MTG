@@ -5,6 +5,7 @@ import io.github.owuor91.domain.di.DIConstants;
 import io.github.owuor91.domain.models.Set;
 import io.github.owuor91.domain.repository.SetRepository;
 import io.github.owuor91.presentation.BasePresenter;
+import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
@@ -21,6 +22,7 @@ public class SetsPresenter implements BasePresenter {
   private View view;
   private CompositeDisposable compositeDisposable;
   private SetRepository setApiRepository;
+  private SetRepository setDbRepository;
 
   @Inject public SetsPresenter(@Named(DIConstants.API) SetRepository setApiRepository) {
     this.setApiRepository = setApiRepository;
@@ -38,8 +40,15 @@ public class SetsPresenter implements BasePresenter {
     compositeDisposable = RxUtils.initDisposables(compositeDisposable);
     view.showProgress();
 
-    Disposable disposable = setApiRepository.getSets()
+    Disposable disposable = setDbRepository.getSets()
         .subscribeOn(Schedulers.io())
+        .flatMap(setList -> {
+          if (setList.isEmpty()) {
+            return setApiRepository.getSets();
+          } else {
+            return Single.just(setList);
+          }
+        })
         .observeOn(AndroidSchedulers.mainThread())
         .doOnSuccess(sets -> view.hideProgress())
         .doOnError(throwable -> view.hideProgress())

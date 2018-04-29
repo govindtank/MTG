@@ -19,9 +19,11 @@ import java.util.List;
 
 public class SetApiRepository implements SetRepository {
   private SetApi setApi;
+  private SetRepository setDbRepository;
 
-  public SetApiRepository(SetApi setApi) {
+  public SetApiRepository(SetApi setApi, SetRepository setDbRepository) {
     this.setApi = setApi;
+    this.setDbRepository = setDbRepository;
   }
 
   @Override public Single<List<Set>> getSets() {
@@ -29,7 +31,8 @@ public class SetApiRepository implements SetRepository {
         .map(SetsResponse::getSetApiModels)
         .flatMap(Flowable::fromIterable)
         .map(SetMapper::transformFromApi)
-        .toList();
+        .toList()
+        .flatMap(setDbRepository::saveSets);
   }
 
   @Override public Single<Set> getSet(String setId) {
@@ -42,5 +45,9 @@ public class SetApiRepository implements SetRepository {
         .flatMap(Flowable::fromIterable)
         .map(CardMapper::transformFromApi)
         .toList();
+  }
+
+  @Override public Single<List<Set>> saveSets(List<Set> setList) {
+    return null;
   }
 }
