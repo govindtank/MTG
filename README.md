@@ -1,7 +1,7 @@
 # MTG
 Magic The Gathering android app in MVP architecture
 
-This is an android app that displays Magic The Gathering Sets, Cards and Boosters. It consumes the <a href="https://magicthegathering.io/">MTG Developers API.</a> The application's architecture follows the Model-View-Presenter design pattern and is divided into 4 modules:
+This is an android app that displays Magic The Gathering Sets, Cards and Boosters. It consumes the <a target="_blank" href="https://magicthegathering.io/">MTG Developers API.</a> The application's architecture follows the Model-View-Presenter design pattern and is divided into 4 modules:
 
  - app - Contains the UI components of the app and the root of the dependency injection.
  - presentation - Contains presenter classes that obtain data from repositories, process and pass it to the views
@@ -10,7 +10,7 @@ This is an android app that displays Magic The Gathering Sets, Cards and Booster
  - domain - Contains interfaces of the repositories and models used throughout the app.
 
 ### Screenshots
-<img src="https://raw.githubusercontent.com/owuor91/hackernews/master/images/story.png" width="260"> <img src="https://raw.githubusercontent.com/owuor91/hackernews/master/images/comment.png" width="260"> <img src="https://raw.githubusercontent.com/owuor91/hackernews/master/images/user.png" width="260">
+<img src="https://raw.githubusercontent.com/owuor91/MTG/master/images/sets.png" width="260"> <img src="https://raw.githubusercontent.com/owuor91/MTG/master/images/cards.png" width="260"> <img src="https://raw.githubusercontent.com/owuor91/MTG/master/images/card.png" width="260">
 
 ### Pull the project
     git clone https://github.com/owuor91/MTG.git
