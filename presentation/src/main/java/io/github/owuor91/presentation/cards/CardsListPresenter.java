@@ -48,8 +48,7 @@ public class CardsListPresenter implements BasePresenter {
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
         .doOnSuccess(cardList -> view.hideProgress())
-        .doOnError(throwable -> view.hideProgress())
-        .subscribe(view::displaySetCards, view::handleError);
+        .doOnError(throwable -> view.hideProgress()).subscribe(view::displayCards, view::handleError);
 
     compositeDisposable.add(disposable);
   }
@@ -68,7 +67,7 @@ public class CardsListPresenter implements BasePresenter {
     }
   }
 
-  private void getBoosterPack(String setCode) {
+  public void getBoosterPack(String setCode) {
     compositeDisposable = RxUtils.initDisposables(compositeDisposable);
     view.showProgress();
 
@@ -76,8 +75,7 @@ public class CardsListPresenter implements BasePresenter {
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
         .doOnSuccess(cardList -> view.hideProgress())
-        .doOnError(throwable -> view.hideProgress())
-        .subscribe(view::displaySetCards, throwable -> {
+        .doOnError(throwable -> view.hideProgress()).subscribe(view::displayCards, throwable -> {
           if (throwable instanceof HttpException && ((HttpException) throwable).code() == Constants.HTTP_ERROR_400) {
             view.showEmptyState();
           } else {
@@ -89,7 +87,7 @@ public class CardsListPresenter implements BasePresenter {
   }
 
   public interface View extends BasePresenter.View {
-    void displaySetCards(List<Card> cardList);
+    void displayCards(List<Card> cardList);
 
     void showProgress();
 

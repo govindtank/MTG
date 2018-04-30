@@ -71,7 +71,7 @@ public class CardsListFragment extends BaseFragment implements CardsListPresente
     cardsListPresenter.fetchCards(mFetchBooster, mSetCode);
   }
 
-  @Override public void displaySetCards(List<Card> cardList) {
+  @Override public void displayCards(List<Card> cardList) {
     if (cardsAdapter == null) {
       cardsAdapter = new CardsAdapter(activityInjector(), getContext());
     }

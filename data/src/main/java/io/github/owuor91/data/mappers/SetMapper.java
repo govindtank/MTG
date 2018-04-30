@@ -31,6 +31,7 @@ public class SetMapper {
   }
 
   public static Date parseDate(String dateString) {
+    if (dateString == null || dateString.equals(Constants.EMPTY_STRING)) return new Date();
     DateFormat dateFormat = new SimpleDateFormat(Constants.YYYY_MM_DD);
     Date date = new Date();
     try {

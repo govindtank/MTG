@@ -11,6 +11,10 @@ import java.util.List;
 public class CardsResponse {
   @SerializedName("cards") private List<CardApiModel> cardApiModels;
 
+  public CardsResponse(List<CardApiModel> cardApiModels) {
+    this.cardApiModels = cardApiModels;
+  }
+
   public List<CardApiModel> getCardApiModels() {
     return cardApiModels;
   }
