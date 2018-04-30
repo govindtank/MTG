@@ -14,7 +14,7 @@ This is an android app that displays Magic The Gathering Sets, Cards and Booster
 
 ### Pull the project
     git clone https://github.com/owuor91/MTG.git
-    cd hackernews
+    cd mtg
 
 ## Libraries Used:
 ### General
