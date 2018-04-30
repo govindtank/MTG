@@ -25,6 +25,7 @@ This is an android app that displays Magic The Gathering Sets, Cards and Booster
 
 ### View
  - [Butter Knife](http://jakewharton.github.io/butterknife/) - View binding
+ - [Picasso](https://square.github.io/picasso/) - Image downloading and display
 
 ### Network
  - [Retrofit](http://square.github.io/retrofit/) -HTTP requests
