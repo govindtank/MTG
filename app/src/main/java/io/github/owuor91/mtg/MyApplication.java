@@ -1,6 +1,8 @@
 package io.github.owuor91.mtg;
 
 import android.app.Application;
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 import io.github.owuor91.mtg.di.activity.ActivityComponent;
 import io.github.owuor91.mtg.di.activity.ActivityModule;
 import io.github.owuor91.mtg.di.app.AndroidModule;
@@ -23,6 +25,8 @@ public class MyApplication extends Application {
         .androidModule(new AndroidModule(this))
         .build();
     applicationComponent.inject(this);
+
+    Fabric.with(this, new Crashlytics());
   }
 
   public ActivityComponent getActivityInjector(BaseActivity baseActivity) {
