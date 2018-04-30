@@ -10,6 +10,10 @@ import io.github.owuor91.data.models.api.CardApiModel;
 public class CardResponse {
   @SerializedName("card") private CardApiModel cardApiModel;
 
+  public CardResponse(CardApiModel cardApiModel) {
+    this.cardApiModel = cardApiModel;
+  }
+
   public CardApiModel getCardApiModel() {
     return cardApiModel;
   }

@@ -10,6 +10,10 @@ import io.github.owuor91.data.models.api.SetApiModel;
 public class SetResponse {
   @SerializedName("set") private SetApiModel setApiModel;
 
+  public SetResponse(SetApiModel setApiModel) {
+    this.setApiModel = setApiModel;
+  }
+
   public SetApiModel getSetApiModel() {
     return setApiModel;
   }

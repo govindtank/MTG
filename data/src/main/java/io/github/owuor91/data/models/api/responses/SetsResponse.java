@@ -11,6 +11,10 @@ import java.util.List;
 public class SetsResponse {
   @SerializedName("sets") private List<SetApiModel> setApiModels;
 
+  public SetsResponse(List<SetApiModel> setApiModels) {
+    this.setApiModels = setApiModels;
+  }
+
   public List<SetApiModel> getSetApiModels() {
     return setApiModels;
   }
